@@ -60,3 +60,6 @@ path = "examples/complex.rs"
 [[example]]
 name = "quaternion"
 path = "examples/quaternion.rs"
+
+[profile.dev]
+debug = 0
