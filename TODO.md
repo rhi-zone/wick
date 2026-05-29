@@ -181,6 +181,16 @@ expr.to_rust_fn("sample", &[("x", "f32"), ("y", "f32")])
 // => "fn sample(x: f32, y: f32) -> f32 { (x * 3.14159_f32).sin() + (y * 2.0_f32).cos() }"
 ```
 
+## Ad-hoc dispatch findings (2026-05-29)
+
+From an ecosystem-wide investigation of ad-hoc dispatch architecture (2026-05-29). The recurring anti-pattern: N parallel dispatch tables keyed on a closed name/enum set where one registry/trait/visitor belongs — strongest tell is DRIFT (parallel tables disagreeing). Each finding names the general mechanism it should have been.
+
+- **F1 — 11 parallel intrinsic dispatch tables, drifted.** Every wick-scalar backend has its own `fn <backend>_func_name`/`emit_func`/`emit_call` matching the same ~32 intrinsic names, no shared registry: `rust.rs:56`, `glsl.rs:56`, `wgsl.rs:56`, `c.rs:45`, `cuda.rs:75`, `hip.rs:76`, `opencl.rs:45`, `lua.rs:54`, `tokenstream.rs:122`, `optimize.rs:93`, plus `cranelift.rs:743` (JIT). DRIFT: `inverse_lerp`/`remap` missing from cuda.rs & hip.rs; `asinh`/`acosh`/`atanh`/`cbrt`/`fma`/`hypot`/`copysign` missing from cpu backends; `signum` alias only in rust.rs. Also: ~46 `ScalarFn` trait impls in lib.rs are unused by any backend (interpreter-only). SHOULD BE: one `INTRINSICS` table (name+arity+semantics tag) + a per-backend `render(intrinsic, args)`; backends specify rendering only, not the roster.
+
+- **F2 — wick-linalg re-implements scalar math.** `wick-linalg/src/rust.rs:457` and `glsl.rs:549` (`fn emit_function_call`) re-handle sin/cos/abs/floor/fract/sqrt/min/max/clamp/step/smoothstep/lerp instead of delegating scalar args to wick-scalar (vector ops dot/cross/length are correctly linalg-specific). SHOULD BE: call wick-scalar for scalar-typed args.
+
+- **F3 — per-backend aliases not centralized.** `rsqrt` accepted in cuda/hip but not c.rs; `signum` only in rust. SHOULD BE: one alias-resolution step before backend dispatch.
+
 ## Future Work
 
 ### Domain Crate Composition (completed)
