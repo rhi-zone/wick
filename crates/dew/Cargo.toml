@@ -5,6 +5,7 @@ edition.workspace = true
 license.workspace = true
 repository.workspace = true
 description = "Combined domain crate for dew expressions (linalg + complex + quaternion)"
+readme = "README.md"
 
 [features]
 default = ["scalar", "linalg", "complex", "quaternion"]

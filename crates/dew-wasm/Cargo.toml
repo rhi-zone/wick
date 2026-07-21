@@ -3,6 +3,7 @@ name = "dew-wasm"
 version = "0.1.0"
 edition = "2021"
 description = "WebAssembly bindings for Dew expression language"
+readme = "README.md"
 license = "MIT"
 publish = false
 

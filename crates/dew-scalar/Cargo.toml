@@ -5,6 +5,7 @@ edition.workspace = true
 license.workspace = true
 repository.workspace = true
 description = "Standard scalar function library for dew expressions"
+readme = "README.md"
 
 [features]
 default = []
