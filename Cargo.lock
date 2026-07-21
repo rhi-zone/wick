@@ -249,7 +249,7 @@ dependencies = [
 
 [[package]]
 name = "dew"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "dew-complex",
  "dew-core",
@@ -261,7 +261,7 @@ dependencies = [
 
 [[package]]
 name = "dew-complex"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cranelift-codegen",
  "cranelift-frontend",
@@ -277,7 +277,7 @@ dependencies = [
 
 [[package]]
 name = "dew-cond"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cranelift-codegen",
  "cranelift-frontend",
@@ -290,7 +290,7 @@ dependencies = [
 
 [[package]]
 name = "dew-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "num-traits",
  "proptest",
@@ -309,7 +309,7 @@ dependencies = [
 
 [[package]]
 name = "dew-linalg"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cranelift-codegen",
  "cranelift-frontend",
@@ -325,7 +325,7 @@ dependencies = [
 
 [[package]]
 name = "dew-quaternion"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cranelift-codegen",
  "cranelift-frontend",
@@ -341,7 +341,7 @@ dependencies = [
 
 [[package]]
 name = "dew-scalar"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "cranelift-codegen",
  "cranelift-frontend",

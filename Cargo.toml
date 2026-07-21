@@ -4,19 +4,19 @@ members = ["crates/*"]
 exclude = ["fuzz"]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/rhi-zone/dew"
 
 [workspace.dependencies]
-dew-core = { path = "crates/dew-core", version = "0.1.0" }
-dew-cond = { path = "crates/dew-cond", version = "0.1.0" }
-dew-scalar = { path = "crates/dew-scalar", version = "0.1.0" }
-dew-linalg = { path = "crates/dew-linalg", version = "0.1.0" }
-dew-complex = { path = "crates/dew-complex", version = "0.1.0" }
-dew-quaternion = { path = "crates/dew-quaternion", version = "0.1.0" }
-dew = { path = "crates/dew", version = "0.1.0" }
+dew-core = { path = "crates/dew-core", version = "0.1.1" }
+dew-cond = { path = "crates/dew-cond", version = "0.1.1" }
+dew-scalar = { path = "crates/dew-scalar", version = "0.1.1" }
+dew-linalg = { path = "crates/dew-linalg", version = "0.1.1" }
+dew-complex = { path = "crates/dew-complex", version = "0.1.1" }
+dew-quaternion = { path = "crates/dew-quaternion", version = "0.1.1" }
+dew = { path = "crates/dew", version = "0.1.1" }
 
 # Root package for examples
 [package]
