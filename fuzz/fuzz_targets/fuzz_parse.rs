@@ -1,7 +1,7 @@
 #![no_main]
 
 use libfuzzer_sys::fuzz_target;
-use wick_core::Expr;
+use dew_core::Expr;
 
 fuzz_target!(|data: &str| {
     // Parser should never panic on any input

@@ -1,0 +1,92 @@
+[package]
+name = "dew"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Combined domain crate for wick expressions (linalg + complex + quaternion)"
+
+[features]
+default = ["scalar", "linalg", "complex", "quaternion"]
+scalar = ["dew-scalar"]
+linalg = ["dew-linalg", "dew-linalg/4d"]
+complex = ["dew-complex"]
+quaternion = ["dew-quaternion"]
+
+# Backend features - propagate to all domain crates
+wgsl = [
+    "dew-scalar?/wgsl",
+    "dew-linalg?/wgsl",
+    "dew-complex?/wgsl",
+    "dew-quaternion?/wgsl",
+]
+glsl = [
+    "dew-scalar?/glsl",
+    "dew-linalg?/glsl",
+    "dew-complex?/glsl",
+    "dew-quaternion?/glsl",
+]
+rust = [
+    "dew-scalar?/rust",
+    "dew-linalg?/rust",
+    "dew-complex?/rust",
+    "dew-quaternion?/rust",
+]
+c = [
+    "dew-scalar?/c",
+    "dew-linalg?/c",
+    "dew-complex?/c",
+    "dew-quaternion?/c",
+]
+opencl = [
+    "dew-scalar?/opencl",
+    "dew-linalg?/opencl",
+    "dew-complex?/opencl",
+    "dew-quaternion?/opencl",
+]
+cuda = [
+    "dew-scalar?/cuda",
+    "dew-linalg?/cuda",
+    "dew-complex?/cuda",
+    "dew-quaternion?/cuda",
+]
+hip = [
+    "dew-scalar?/hip",
+    "dew-linalg?/hip",
+    "dew-complex?/hip",
+    "dew-quaternion?/hip",
+]
+tokenstream = [
+    "dew-scalar?/tokenstream",
+    "dew-linalg?/tokenstream",
+    "dew-complex?/tokenstream",
+    "dew-quaternion?/tokenstream",
+]
+lua = [
+    "dew-scalar?/lua",
+    "dew-linalg?/lua",
+    "dew-complex?/lua",
+    "dew-quaternion?/lua",
+]
+cranelift = [
+    "dew-scalar?/cranelift",
+    "dew-linalg?/cranelift",
+    "dew-complex?/cranelift",
+    "dew-quaternion?/cranelift",
+]
+optimize = [
+    "dew-scalar?/optimize",
+    "dew-linalg?/optimize",
+    "dew-complex?/optimize",
+    "dew-quaternion?/optimize",
+]
+
+[dependencies]
+dew-core = { workspace = true, features = ["func"] }
+num-traits = "0.2"
+
+# Optional domain crate dependencies
+dew-scalar = { workspace = true, optional = true }
+dew-linalg = { workspace = true, optional = true }
+dew-complex = { workspace = true, optional = true }
+dew-quaternion = { workspace = true, optional = true }

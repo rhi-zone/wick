@@ -3,7 +3,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WASM_CRATE="$SCRIPT_DIR/../crates/wick-wasm"
+WASM_CRATE="$SCRIPT_DIR/../crates/dew-wasm"
 OUT_DIR="$SCRIPT_DIR/../docs/public/wasm"
 
 # Profiles: name -> cargo features

@@ -2,8 +2,8 @@
 
 use arbitrary::{Arbitrary, Unstructured};
 use libfuzzer_sys::fuzz_target;
-use wick_core::Expr;
-use wick_scalar::{scalar_registry, cranelift::ScalarJit, lua::eval_lua, FunctionRegistry};
+use dew_core::Expr;
+use dew_scalar::{scalar_registry, cranelift::ScalarJit, lua::eval_lua, FunctionRegistry};
 use std::collections::HashMap;
 use std::sync::OnceLock;
 
@@ -122,7 +122,7 @@ fuzz_target!(|input: ParityInput| {
     let registry = scalar_registry::<f32>();
 
     // 1. Direct eval (interpreter)
-    let eval_result = wick_scalar::eval(expr.ast(), &input.var_values, &registry);
+    let eval_result = dew_scalar::eval(expr.ast(), &input.var_values, &registry);
     let Ok(eval_val) = eval_result else {
         return; // Unknown function/variable
     };

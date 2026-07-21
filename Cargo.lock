@@ -248,6 +248,119 @@ dependencies = [
 ]
 
 [[package]]
+name = "dew"
+version = "0.1.0"
+dependencies = [
+ "dew-complex",
+ "dew-core",
+ "dew-linalg",
+ "dew-quaternion",
+ "dew-scalar",
+ "num-traits",
+]
+
+[[package]]
+name = "dew-complex"
+version = "0.1.0"
+dependencies = [
+ "cranelift-codegen",
+ "cranelift-frontend",
+ "cranelift-jit",
+ "cranelift-module",
+ "dew-cond",
+ "dew-core",
+ "mlua",
+ "num-traits",
+ "proc-macro2",
+ "quote",
+]
+
+[[package]]
+name = "dew-cond"
+version = "0.1.0"
+dependencies = [
+ "cranelift-codegen",
+ "cranelift-frontend",
+ "cranelift-jit",
+ "cranelift-module",
+ "dew-core",
+ "proc-macro2",
+ "quote",
+]
+
+[[package]]
+name = "dew-core"
+version = "0.1.0"
+dependencies = [
+ "num-traits",
+ "proptest",
+]
+
+[[package]]
+name = "dew-linalg"
+version = "0.1.0"
+dependencies = [
+ "cranelift-codegen",
+ "cranelift-frontend",
+ "cranelift-jit",
+ "cranelift-module",
+ "dew-cond",
+ "dew-core",
+ "mlua",
+ "num-traits",
+ "proc-macro2",
+ "quote",
+]
+
+[[package]]
+name = "dew-quaternion"
+version = "0.1.0"
+dependencies = [
+ "cranelift-codegen",
+ "cranelift-frontend",
+ "cranelift-jit",
+ "cranelift-module",
+ "dew-cond",
+ "dew-core",
+ "mlua",
+ "num-traits",
+ "proc-macro2",
+ "quote",
+]
+
+[[package]]
+name = "dew-scalar"
+version = "0.1.0"
+dependencies = [
+ "cranelift-codegen",
+ "cranelift-frontend",
+ "cranelift-jit",
+ "cranelift-module",
+ "dew-cond",
+ "dew-core",
+ "mlua",
+ "num-traits",
+ "proc-macro2",
+ "quote",
+]
+
+[[package]]
+name = "dew-wasm"
+version = "0.1.0"
+dependencies = [
+ "console_error_panic_hook",
+ "dew-complex",
+ "dew-core",
+ "dew-linalg",
+ "dew-quaternion",
+ "dew-scalar",
+ "serde",
+ "serde-wasm-bindgen",
+ "wasm-bindgen",
+ "wasm-bindgen-test",
+]
+
+[[package]]
 name = "either"
 version = "1.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1038,127 +1151,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "wick-all"
-version = "0.1.0"
-dependencies = [
- "num-traits",
- "wick-complex",
- "wick-core",
- "wick-linalg",
- "wick-quaternion",
- "wick-scalar",
-]
-
-[[package]]
-name = "wick-complex"
-version = "0.1.0"
-dependencies = [
- "cranelift-codegen",
- "cranelift-frontend",
- "cranelift-jit",
- "cranelift-module",
- "mlua",
- "num-traits",
- "proc-macro2",
- "quote",
- "wick-cond",
- "wick-core",
-]
-
-[[package]]
-name = "wick-cond"
-version = "0.1.0"
-dependencies = [
- "cranelift-codegen",
- "cranelift-frontend",
- "cranelift-jit",
- "cranelift-module",
- "proc-macro2",
- "quote",
- "wick-core",
-]
-
-[[package]]
-name = "wick-core"
-version = "0.1.0"
-dependencies = [
- "num-traits",
- "proptest",
-]
-
-[[package]]
 name = "wick-examples"
 version = "0.0.0"
 dependencies = [
- "wick-complex",
- "wick-core",
- "wick-linalg",
- "wick-quaternion",
- "wick-scalar",
-]
-
-[[package]]
-name = "wick-linalg"
-version = "0.1.0"
-dependencies = [
- "cranelift-codegen",
- "cranelift-frontend",
- "cranelift-jit",
- "cranelift-module",
- "mlua",
- "num-traits",
- "proc-macro2",
- "quote",
- "wick-cond",
- "wick-core",
-]
-
-[[package]]
-name = "wick-quaternion"
-version = "0.1.0"
-dependencies = [
- "cranelift-codegen",
- "cranelift-frontend",
- "cranelift-jit",
- "cranelift-module",
- "mlua",
- "num-traits",
- "proc-macro2",
- "quote",
- "wick-cond",
- "wick-core",
-]
-
-[[package]]
-name = "wick-scalar"
-version = "0.1.0"
-dependencies = [
- "cranelift-codegen",
- "cranelift-frontend",
- "cranelift-jit",
- "cranelift-module",
- "mlua",
- "num-traits",
- "proc-macro2",
- "quote",
- "wick-cond",
- "wick-core",
-]
-
-[[package]]
-name = "wick-wasm"
-version = "0.1.0"
-dependencies = [
- "console_error_panic_hook",
- "serde",
- "serde-wasm-bindgen",
- "wasm-bindgen",
- "wasm-bindgen-test",
- "wick-complex",
- "wick-core",
- "wick-linalg",
- "wick-quaternion",
- "wick-scalar",
+ "dew-complex",
+ "dew-core",
+ "dew-linalg",
+ "dew-quaternion",
+ "dew-scalar",
 ]
 
 [[package]]

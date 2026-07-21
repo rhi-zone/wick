@@ -1,0 +1,20 @@
+[package]
+name = "dew-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Core expression language for wick"
+
+[features]
+default = ["introspect"]
+cond = []
+func = []
+introspect = []  # AST introspection: free_vars, etc.
+optimize = []    # Expression optimization passes
+
+[dependencies]
+num-traits = "0.2"
+
+[dev-dependencies]
+proptest = "1.5"

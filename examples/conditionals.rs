@@ -2,9 +2,9 @@
 //!
 //! Run with: cargo run --example conditionals
 
+use dew_core::Expr;
+use dew_scalar::{eval, scalar_registry};
 use std::collections::HashMap;
-use wick_core::Expr;
-use wick_scalar::{eval, scalar_registry};
 
 fn main() {
     let registry = scalar_registry();

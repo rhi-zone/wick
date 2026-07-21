@@ -9,20 +9,20 @@ Behavioral rules for Claude Code in this repository.
 Functions + numeric values, compiled to multiple backends (WGSL, Cranelift, Lua).
 
 **Crate structure:**
-- `wick-core` - Core AST, types, and expression representation
-- `wick-cond` - Conditional backend helpers for domain crates
-- `wick-scalar` - Standard scalar math functions (sin, cos, etc.)
-- `wick-linalg` - Linear algebra types and operations
-- `wick-complex` - Complex number operations
-- `wick-quaternion` - Quaternion operations
+- `dew-core` - Core AST, types, and expression representation
+- `dew-cond` - Conditional backend helpers for domain crates
+- `dew-scalar` - Standard scalar math functions (sin, cos, etc.)
+- `dew-linalg` - Linear algebra types and operations
+- `dew-complex` - Complex number operations
+- `dew-quaternion` - Quaternion operations
 
 Backends (wgsl, lua, cranelift) are feature flags within each domain crate.
 
 ## Publishing
 
-**Published on [crates.io](https://crates.io/crates/wick-core)** as 7 crates: `wick-core`, `wick-cond`, `wick-scalar`, `wick-linalg`, `wick-complex`, `wick-quaternion`, `wick-all`. All at v0.1.0 (early, in active development). The `wick-wasm` crate is `publish = false` (wasm-pack target).
+**Published on [crates.io](https://crates.io/crates/dew-core)** as 7 crates: `dew-core`, `dew-cond`, `dew-scalar`, `dew-linalg`, `dew-complex`, `dew-quaternion`, `dew`. All at v0.1.0 (early, in active development). The `dew-wasm` crate is `publish = false` (wasm-pack target).
 
-Note: The old `rhizome-dew-*` names (v0.1.0) were published and immediately yanked. The canonical crate names are `wick-*`.
+Note: The old `rhizome-dew-*` and `wick-*` names (v0.1.0) were published and immediately yanked. The canonical crate names are `dew-*` (with the umbrella crate as `dew`).
 
 ## Behavioral Patterns
 

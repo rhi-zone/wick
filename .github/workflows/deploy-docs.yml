@@ -33,7 +33,7 @@ jobs:
 
       - name: Build WASM
         run: |
-          wasm-pack build crates/wick-wasm --target web --out-dir ../../docs/public/wasm
+          wasm-pack build crates/dew-wasm --target web --out-dir ../../docs/public/wasm
           rm -f docs/public/wasm/.gitignore docs/public/wasm/package.json
 
       - name: Setup Bun

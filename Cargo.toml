@@ -10,13 +10,13 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/rhi-zone/wick"
 
 [workspace.dependencies]
-wick-core = { path = "crates/wick-core", version = "0.1.0" }
-wick-cond = { path = "crates/wick-cond", version = "0.1.0" }
-wick-scalar = { path = "crates/wick-scalar", version = "0.1.0" }
-wick-linalg = { path = "crates/wick-linalg", version = "0.1.0" }
-wick-complex = { path = "crates/wick-complex", version = "0.1.0" }
-wick-quaternion = { path = "crates/wick-quaternion", version = "0.1.0" }
-wick-all = { path = "crates/wick-all", version = "0.1.0" }
+dew-core = { path = "crates/dew-core", version = "0.1.0" }
+dew-cond = { path = "crates/dew-cond", version = "0.1.0" }
+dew-scalar = { path = "crates/dew-scalar", version = "0.1.0" }
+dew-linalg = { path = "crates/dew-linalg", version = "0.1.0" }
+dew-complex = { path = "crates/dew-complex", version = "0.1.0" }
+dew-quaternion = { path = "crates/dew-quaternion", version = "0.1.0" }
+dew = { path = "crates/dew", version = "0.1.0" }
 
 # Root package for examples
 [package]
@@ -27,14 +27,14 @@ publish = false
 
 [features]
 default = []
-wgsl = ["wick-scalar/wgsl"]
+wgsl = ["dew-scalar/wgsl"]
 
 [dependencies]
-wick-core = { workspace = true, features = ["cond", "func"] }
-wick-scalar = { workspace = true }
-wick-linalg = { workspace = true }
-wick-complex = { workspace = true }
-wick-quaternion = { workspace = true }
+dew-core = { workspace = true, features = ["cond", "func"] }
+dew-scalar = { workspace = true }
+dew-linalg = { workspace = true }
+dew-complex = { workspace = true }
+dew-quaternion = { workspace = true }
 
 [[example]]
 name = "basic"

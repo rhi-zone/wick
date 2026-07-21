@@ -52,4 +52,4 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Build WASM
-        run: wasm-pack build crates/wick-wasm --target web
+        run: wasm-pack build crates/dew-wasm --target web

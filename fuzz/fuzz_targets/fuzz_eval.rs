@@ -2,8 +2,8 @@
 
 use arbitrary::Arbitrary;
 use libfuzzer_sys::fuzz_target;
-use wick_core::Expr;
-use wick_scalar::scalar_registry;
+use dew_core::Expr;
+use dew_scalar::scalar_registry;
 use std::collections::HashMap;
 
 /// Structured input for evaluation fuzzing.
@@ -29,8 +29,8 @@ fuzz_target!(|input: EvalInput| {
         .collect();
 
     // Get standard function registry
-    let registry: wick_scalar::FunctionRegistry<f32> = scalar_registry();
+    let registry: dew_scalar::FunctionRegistry<f32> = scalar_registry();
 
     // Evaluation should never panic (may return Err for unknown vars/funcs, that's fine)
-    let _ = wick_scalar::eval(expr.ast(), &vars, &registry);
+    let _ = dew_scalar::eval(expr.ast(), &vars, &registry);
 });

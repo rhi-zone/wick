@@ -2,9 +2,9 @@
 //!
 //! Run with: cargo run --example complex
 
+use dew_complex::{Value, complex_registry, eval};
+use dew_core::Expr;
 use std::collections::HashMap;
-use wick_complex::{Value, complex_registry, eval};
-use wick_core::Expr;
 
 fn main() {
     let registry = complex_registry();
