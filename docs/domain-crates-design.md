@@ -5,17 +5,17 @@ Design doc for future domain crates: complex, quaternion, dual numbers.
 ## Overview
 
 ```
-wick-core (syntax only)
+dew-core (syntax only)
     │
-    ├── wick-scalar      # T: Float
-    ├── wick-linalg      # Vec2, Vec3, Mat2, Mat3, etc.
+    ├── dew-scalar      # T: Float
+    ├── dew-linalg      # Vec2, Vec3, Mat2, Mat3, etc.
     │
-    ├── wick-complex     # Complex<T> - 2D rotations, signal processing
-    ├── wick-quaternion  # Quaternion<T> - 3D rotations
-    └── wick-dual        # Dual<T> - automatic differentiation
+    ├── dew-complex     # Complex<T> - 2D rotations, signal processing
+    ├── dew-quaternion  # Quaternion<T> - 3D rotations
+    └── dew-dual        # Dual<T> - automatic differentiation
 ```
 
-## wick-complex
+## dew-complex
 
 2D complex numbers: `a + bi`
 
@@ -76,7 +76,7 @@ Options:
 
 ---
 
-## wick-quaternion
+## dew-quaternion
 
 3D rotations: `w + xi + yj + zk`
 
@@ -123,7 +123,7 @@ pub struct Quaternion<T>(pub [T; 4]);  // [w, x, y, z] or [x, y, z, w]?
 Critical: `rotate(vec3, quaternion) → vec3`
 
 Options:
-1. **wick-quaternion depends on wick-linalg** - can use Vec3 directly
+1. **dew-quaternion depends on dew-linalg** - can use Vec3 directly
 2. **Trait-based** - QuaternionValue trait, users compose
 3. **Function takes array** - `rotate([T; 3], Quaternion<T>) -> [T; 3]`
 
@@ -137,7 +137,7 @@ Option 3 is simplest - no dependency, arrays are universal.
 
 ---
 
-## wick-dual
+## dew-dual
 
 Dual numbers for automatic differentiation: `a + bε` where `ε² = 0`
 
@@ -213,14 +213,14 @@ For gradients (∂f/∂x, ∂f/∂y, ...), need dual vectors or multiple passes.
 Each crate defines a trait for composability:
 
 ```rust
-// wick-complex
+// dew-complex
 pub trait ComplexValue<T: Float>: Clone + PartialEq + Debug {
     fn from_complex(c: [T; 2]) -> Self;
     fn as_complex(&self) -> Option<[T; 2]>;
     // ...
 }
 
-// wick-quaternion
+// dew-quaternion
 pub trait QuaternionValue<T: Float>: Clone + PartialEq + Debug {
     fn from_quaternion(q: [T; 4]) -> Self;
     fn as_quaternion(&self) -> Option<[T; 4]>;
@@ -244,4 +244,4 @@ WGSL note: No native complex/quaternion, emit as vec2/vec4 with custom functions
 1. **Quaternion component order:** `[x, y, z, w]` (GLM/glTF convention, scalar last)
 2. **Struct style:** Array `([T; 2])` for consistency with linalg
 3. **Rotation API:** Both `rotate(vec, quat)` function AND `quat * vec` operator
-4. **Implementation order:** wick-complex first, then wick-quaternion
+4. **Implementation order:** dew-complex first, then dew-quaternion

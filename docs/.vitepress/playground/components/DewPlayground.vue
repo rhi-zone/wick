@@ -26,7 +26,7 @@ interface CodeResult {
 type Profile = 'scalar' | 'linalg' | 'complex' | 'quaternion'
 type VarTypes = Record<string, string>
 
-interface WickWasm {
+interface DewWasm {
   parse: (input: string) => ParseResult
   emit_wgsl: (input: string) => CodeResult
   emit_glsl: (input: string) => CodeResult
@@ -53,7 +53,7 @@ const expression = ref('sin(x) + cos(y) * 2')
 const profile = ref<Profile>('scalar')
 const varTypesInput = ref('')
 const activeTab = ref('AST')
-const wasm = ref<WickWasm | null>(null)
+const wasm = ref<DewWasm | null>(null)
 const wasmLoading = ref(true)
 const wasmError = ref(false)
 
@@ -123,8 +123,8 @@ function setProfile(p: Profile) {
 
 onMounted(async () => {
   try {
-    // In the docs build, WASM files are served from /wick/wasm/
-    const wasmModule = await import(/* @vite-ignore */ `${import.meta.env.BASE_URL}wasm/wick_wasm.js`)
+    // In the docs build, WASM files are served from /dew/wasm/
+    const wasmModule = await import(/* @vite-ignore */ `${import.meta.env.BASE_URL}wasm/dew_wasm.js`)
     await wasmModule.default()
     wasm.value = {
       parse: wasmModule.parse,
@@ -151,9 +151,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="wick-playground">
-    <div class="wick-playground__toolbar">
-      <div class="wick-playground__profiles">
+  <div class="dew-playground">
+    <div class="dew-playground__toolbar">
+      <div class="dew-playground__profiles">
         <button
           v-for="p in PROFILES"
           :key="p.id"
@@ -164,17 +164,17 @@ onMounted(async () => {
           {{ p.label }}
         </button>
       </div>
-      <div class="wick-playground__status">
+      <div class="dew-playground__status">
         <span v-if="wasmLoading" class="status status--loading">Loading WASM...</span>
         <span v-else-if="wasmError" class="status status--error">WASM unavailable</span>
         <span v-else class="status status--ok">Ready</span>
       </div>
     </div>
 
-    <div class="wick-playground__grid">
-      <div class="wick-playground__input">
+    <div class="dew-playground__grid">
+      <div class="dew-playground__input">
         <div class="section-label">Expression</div>
-        <PlaygroundEditor v-model="expression" placeholder="Enter a wick expression..." />
+        <PlaygroundEditor v-model="expression" placeholder="Enter a dew expression..." />
         <div v-if="needsVarTypes" class="var-types">
           <label class="var-types__label">
             Variable Types
@@ -191,7 +191,7 @@ onMounted(async () => {
         </div>
       </div>
 
-      <div class="wick-playground__output">
+      <div class="dew-playground__output">
         <div class="section-label">Output</div>
         <div class="output-container">
           <template v-if="activeTab === 'AST'">
@@ -227,11 +227,11 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.wick-playground {
+.dew-playground {
   margin: 24px 0;
 }
 
-.wick-playground__toolbar {
+.dew-playground__toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -240,7 +240,7 @@ onMounted(async () => {
   flex-wrap: wrap;
 }
 
-.wick-playground__profiles {
+.dew-playground__profiles {
   display: flex;
   gap: 4px;
 }
@@ -284,14 +284,14 @@ onMounted(async () => {
   color: var(--vp-c-green-1);
 }
 
-.wick-playground__grid {
+.dew-playground__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
 
 @media (max-width: 768px) {
-  .wick-playground__grid {
+  .dew-playground__grid {
     grid-template-columns: 1fr;
   }
 }

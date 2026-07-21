@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Linear algebra types and operations for wick expressions"
+description = "Linear algebra types and operations for dew expressions"
 
 [features]
 default = ["3d"]

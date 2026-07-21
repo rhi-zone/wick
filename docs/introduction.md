@@ -1,23 +1,23 @@
 # Introduction
 
-Wick is a minimal expression language that compiles to multiple backends. Parse once, emit to WGSL/GLSL (GPU shaders), Cranelift (native JIT), or Lua (scripting).
+Dew is a minimal expression language that compiles to multiple backends. Parse once, emit to WGSL/GLSL (GPU shaders), Cranelift (native JIT), or Lua (scripting).
 
 Part of the [rhi](https://rhi-zone.github.io) ecosystem.
 
 ## Architecture
 
 ```
-wick-core               # Syntax only: AST, parsing
+dew-core               # Syntax only: AST, parsing
     |
-    +-- wick-cond       # Conditional backend helpers
+    +-- dew-cond       # Conditional backend helpers
     |
-    +-- wick-scalar     # Scalar domain: f32/f64 math functions
+    +-- dew-scalar     # Scalar domain: f32/f64 math functions
     |
-    +-- wick-linalg     # Linalg domain: Vec2, Vec3, Mat2, Mat3
+    +-- dew-linalg     # Linalg domain: Vec2, Vec3, Mat2, Mat3
     |
-    +-- wick-complex    # Complex numbers: [re, im]
+    +-- dew-complex    # Complex numbers: [re, im]
     |
-    +-- wick-quaternion # Quaternions: [x, y, z, w], Vec3
+    +-- dew-quaternion # Quaternions: [x, y, z, w], Vec3
 ```
 
 All domain crates have multiple backends (feature flags): WGSL, GLSL, OpenCL, CUDA, HIP, Rust, C, TokenStream, Lua, and Cranelift.
@@ -29,7 +29,7 @@ All domain crates have multiple backends (feature flags): WGSL, GLSL, OpenCL, CU
 
 ## Feature Flags
 
-wick-core uses feature flags to manage complexity:
+dew-core uses feature flags to manage complexity:
 
 | Feature | Description |
 |---------|-------------|
@@ -42,8 +42,8 @@ Domain crates automatically enable `func` (they rely on function calls).
 ## Quick Example
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::{eval, scalar_registry};
+use dew_core::Expr;
+use dew_scalar::{eval, scalar_registry};
 
 // Parse an expression
 let expr = Expr::parse("sin(x) + cos(y)").unwrap();
@@ -59,11 +59,11 @@ let result = eval(expr.ast(), &vars, &registry).unwrap();
 
 ### With Conditionals
 
-When wick-core is compiled with the `cond` feature:
+When dew-core is compiled with the `cond` feature:
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::{eval, scalar_registry};
+use dew_core::Expr;
+use dew_scalar::{eval, scalar_registry};
 
 // Conditional expression
 let expr = Expr::parse("if x > 0 then sqrt(x) else 0").unwrap();
@@ -96,7 +96,7 @@ Enable in `Cargo.toml`:
 
 ```toml
 [dependencies]
-wick-scalar = { version = "0.1", features = ["wgsl", "glsl", "lua", "cranelift"] }
+dew-scalar = { version = "0.1", features = ["wgsl", "glsl", "lua", "cranelift"] }
 ```
 
 ### C Backend Limitations
@@ -127,9 +127,9 @@ The generated code is designed to be embedded in projects with existing math lib
 
 | Crate | Description |
 |-------|-------------|
-| `wick-core` | Core AST and parsing (feature-gated conditionals and functions) |
-| `wick-cond` | Conditional backend helpers for domain crates |
-| `wick-scalar` | Scalar math: sin, cos, exp, lerp, etc. |
-| `wick-linalg` | Linear algebra: Vec2-4, Mat2-4, dot, cross, etc. |
-| `wick-complex` | Complex numbers: exp, log, polar, conjugate, etc. |
-| `wick-quaternion` | Quaternions: rotation, slerp, axis-angle, etc. |
+| `dew-core` | Core AST and parsing (feature-gated conditionals and functions) |
+| `dew-cond` | Conditional backend helpers for domain crates |
+| `dew-scalar` | Scalar math: sin, cos, exp, lerp, etc. |
+| `dew-linalg` | Linear algebra: Vec2-4, Mat2-4, dot, cross, etc. |
+| `dew-complex` | Complex numbers: exp, log, polar, conjugate, etc. |
+| `dew-quaternion` | Quaternions: rotation, slerp, axis-angle, etc. |

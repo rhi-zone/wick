@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build WASM profiles for wick playground
+# Build WASM profiles for dew playground
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

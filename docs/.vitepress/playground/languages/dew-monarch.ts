@@ -1,6 +1,6 @@
 import type { languages } from 'monaco-editor'
 
-export const wickLanguage: languages.IMonarchLanguage = {
+export const dewLanguage: languages.IMonarchLanguage = {
   keywords: ['if', 'then', 'else', 'and', 'or', 'not', 'let', 'in', 'true', 'false'],
 
   operators: ['+', '-', '*', '/', '^', '%', '<', '<=', '>', '>=', '==', '!='],
@@ -41,7 +41,7 @@ export const wickLanguage: languages.IMonarchLanguage = {
   },
 }
 
-export const wickLanguageConfiguration: languages.LanguageConfiguration = {
+export const dewLanguageConfiguration: languages.LanguageConfiguration = {
   comments: {
     lineComment: '//',
   },

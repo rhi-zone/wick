@@ -1,21 +1,21 @@
 # OpenCL Backend
 
-Generate OpenCL kernel code from wick expressions.
+Generate OpenCL kernel code from dew expressions.
 
 ## Enable
 
 ```toml
-wick-scalar = { version = "0.1", features = ["opencl"] }
-wick-linalg = { version = "0.1", features = ["opencl"] }
+dew-scalar = { version = "0.1", features = ["opencl"] }
+dew-linalg = { version = "0.1", features = ["opencl"] }
 ```
 
-## wick-scalar
+## dew-scalar
 
 ### Generate Expression
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::opencl::emit_opencl;
+use dew_core::Expr;
+use dew_scalar::opencl::emit_opencl;
 
 let expr = Expr::parse("sin(x) + cos(y)").unwrap();
 let ocl = emit_opencl(expr.ast()).unwrap();
@@ -27,7 +27,7 @@ println!("{}", ocl.code);
 ### Generate Kernel Function
 
 ```rust
-use wick_scalar::opencl::emit_opencl_fn;
+use dew_scalar::opencl::emit_opencl_fn;
 
 let expr = Expr::parse("x * x + y * y").unwrap();
 let ocl = emit_opencl_fn("distance_squared", expr.ast(), &["x", "y"]).unwrap();
@@ -39,14 +39,14 @@ println!("{}", ocl);
 // }
 ```
 
-## wick-linalg
+## dew-linalg
 
 ### Generate with Types
 
 ```rust
-use wick_core::Expr;
-use wick_linalg::opencl::emit_opencl;
-use wick_linalg::Type;
+use dew_core::Expr;
+use dew_linalg::opencl::emit_opencl;
+use dew_linalg::Type;
 use std::collections::HashMap;
 
 let expr = Expr::parse("dot(a, b)").unwrap();
@@ -67,7 +67,7 @@ println!("{}", result.code);
 
 OpenCL provides native vector types:
 
-| wick Type | OpenCL Type |
+| dew Type | OpenCL Type |
 |----------|-------------|
 | Scalar | `float` |
 | Vec2 | `float2` |
@@ -78,7 +78,7 @@ OpenCL provides native vector types:
 
 OpenCL has built-in functions for common vector operations:
 
-| wick | OpenCL |
+| dew | OpenCL |
 |-----|--------|
 | `dot(a, b)` | `dot(a, b)` |
 | `cross(a, b)` | `cross(a, b)` |
@@ -97,7 +97,7 @@ OpenCL has built-in functions for common vector operations:
 
 ## Function Mapping
 
-| wick | OpenCL |
+| dew | OpenCL |
 |-----|--------|
 | `sin(x)` | `sin(x)` |
 | `cos(x)` | `cos(x)` |

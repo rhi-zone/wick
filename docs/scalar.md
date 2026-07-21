@@ -1,23 +1,23 @@
-# wick-scalar
+# dew-scalar
 
-Standard scalar math functions for wick expressions.
+Standard scalar math functions for dew expressions.
 
 ## Installation
 
 ```toml
 [dependencies]
-wick-core = "0.1"
-wick-scalar = "0.1"
+dew-core = "0.1"
+dew-scalar = "0.1"
 
 # Enable backends as needed
-wick-scalar = { version = "0.1", features = ["wgsl", "glsl", "lua", "cranelift"] }
+dew-scalar = { version = "0.1", features = ["wgsl", "glsl", "lua", "cranelift"] }
 ```
 
 ## Basic Usage
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::{eval, scalar_registry};
+use dew_core::Expr;
+use dew_scalar::{eval, scalar_registry};
 use std::collections::HashMap;
 
 // Parse an expression
@@ -122,7 +122,7 @@ println!("Result: {}", result);
 Works with any `T: Numeric` (Float or Integer types):
 
 ```rust
-use wick_scalar::{eval, scalar_registry, scalar_registry_int};
+use dew_scalar::{eval, scalar_registry, scalar_registry_int};
 
 // Floating-point (f32/f64) - full function set
 let result_f32: f32 = eval::<f32>(expr.ast(), &vars_f32, &scalar_registry()).unwrap();

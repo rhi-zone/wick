@@ -1,21 +1,21 @@
 # C Backend
 
-Generate C source code from wick expressions.
+Generate C source code from dew expressions.
 
 ## Enable
 
 ```toml
-wick-scalar = { version = "0.1", features = ["c"] }
-wick-linalg = { version = "0.1", features = ["c"] }
+dew-scalar = { version = "0.1", features = ["c"] }
+dew-linalg = { version = "0.1", features = ["c"] }
 ```
 
-## wick-scalar
+## dew-scalar
 
 ### Generate Expression
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::c::emit_c;
+use dew_core::Expr;
+use dew_scalar::c::emit_c;
 
 let expr = Expr::parse("sin(x) + cos(y)").unwrap();
 let c = emit_c(expr.ast()).unwrap();
@@ -27,7 +27,7 @@ println!("{}", c.code);
 ### Generate Function
 
 ```rust
-use wick_scalar::c::emit_c_fn;
+use dew_scalar::c::emit_c_fn;
 
 let expr = Expr::parse("x * x + y * y").unwrap();
 let c = emit_c_fn("distance_squared", expr.ast(), &["x", "y"]).unwrap();
@@ -41,7 +41,7 @@ println!("{}", c);
 
 ## Function Mapping
 
-| wick | C |
+| dew | C |
 |-----|---|
 | `sin(x)` | `sinf(x)` |
 | `cos(x)` | `cosf(x)` |

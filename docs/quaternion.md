@@ -1,23 +1,23 @@
-# wick-quaternion
+# dew-quaternion
 
-Quaternion support for wick expressions. Essential for 3D rotations, avoiding gimbal lock.
+Quaternion support for dew expressions. Essential for 3D rotations, avoiding gimbal lock.
 
 ## Installation
 
 ```toml
 [dependencies]
-wick-core = "0.1"
-wick-quaternion = "0.1"
+dew-core = "0.1"
+dew-quaternion = "0.1"
 
 # Enable backends as needed
-wick-quaternion = { version = "0.1", features = ["wgsl", "glsl", "lua", "cranelift"] }
+dew-quaternion = { version = "0.1", features = ["wgsl", "glsl", "lua", "cranelift"] }
 ```
 
 ## Basic Usage
 
 ```rust
-use wick_core::Expr;
-use wick_quaternion::{Value, eval, quaternion_registry};
+use dew_core::Expr;
+use dew_quaternion::{Value, eval, quaternion_registry};
 use std::collections::HashMap;
 
 // Parse an expression

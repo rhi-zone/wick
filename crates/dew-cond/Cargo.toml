@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Conditional and boolean support for wick expressions"
+description = "Conditional and boolean support for dew expressions"
 
 [features]
 default = []

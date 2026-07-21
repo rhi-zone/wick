@@ -1,4 +1,4 @@
-//! Combined domain crate for wick expressions.
+//! Combined domain crate for dew expressions.
 //!
 //! Provides a unified `Value` type that implements all domain traits,
 //! enabling seamless composition of linalg, complex, and quaternion operations.

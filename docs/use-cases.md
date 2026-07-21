@@ -1,12 +1,12 @@
 # Use Cases
 
-Real-world applications and patterns for Wick expressions.
+Real-world applications and patterns for Dew expressions.
 
 ## GPU Shaders
 
 ### Procedural Generation
 
-Generate complex procedural patterns once in Wick, compile to WGSL for GPU execution.
+Generate complex procedural patterns once in Dew, compile to WGSL for GPU execution.
 
 **Before (manual WGSL):**
 ```wgsl
@@ -27,9 +27,9 @@ fn noise_octaves(p: vec2<f32>, octaves: i32) -> f32 {
 }
 ```
 
-**After (Wick):**
+**After (Dew):**
 ```rust
-use wick_linalg::{emit_wgsl, Type};
+use dew_linalg::{emit_wgsl, Type};
 
 // Define expression once
 let expr = Expr::parse(r#"
@@ -89,10 +89,10 @@ let expr = Expr::parse(r#"
 
 ### Audio Effects with Complex Numbers
 
-Complex numbers in Wick are perfect for frequency-domain audio processing.
+Complex numbers in Dew are perfect for frequency-domain audio processing.
 
 ```rust
-use wick_complex::{Value, eval, complex_registry};
+use dew_complex::{Value, eval, complex_registry};
 
 // Frequency response of a low-pass filter
 let expr = Expr::parse(r#"
@@ -135,7 +135,7 @@ let expr = Expr::parse(r#"
 Smooth camera transitions or skeletal animation.
 
 ```rust
-use wick_quaternion::{Value, eval, quaternion_registry};
+use dew_quaternion::{Value, eval, quaternion_registry};
 
 // Camera interpolation
 let expr = Expr::parse(r#"
@@ -184,7 +184,7 @@ let expr = Expr::parse(r#"
 ### Hot-Reloadable Logic with Lua Backend
 
 ```rust
-use wick_scalar::{emit_lua, eval_lua, scalar_registry};
+use dew_scalar::{emit_lua, eval_lua, scalar_registry};
 
 // Define game logic expression
 let damage_formula = Expr::parse(r#"
@@ -345,7 +345,7 @@ let wgsl = emit_wgsl(expr.ast(), &var_types).unwrap();
 ### Expression Caching
 
 ```rust
-use wick_core::optimize::{optimize, standard_passes};
+use dew_core::optimize::{optimize, standard_passes};
 use std::collections::HashMap;
 
 struct ExpressionCache {
@@ -390,7 +390,7 @@ let result = eval_lua(expr.ast(), &vars).unwrap();
 
 ## Summary
 
-Wick shines when you need:
+Dew shines when you need:
 - **Cross-platform math** - Write once, run on CPU/GPU/web
 - **Hot-reloadable logic** - Update expressions without recompiling
 - **Domain-specific expressions** - GPU shaders, signal processing, 3D transforms

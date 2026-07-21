@@ -17,17 +17,17 @@ const { isDark } = useData()
 
 onMounted(async () => {
   const monaco = await import('monaco-editor')
-  const { wickLanguage, wickLanguageConfiguration } = await import('../languages/wick-monarch')
+  const { dewLanguage, dewLanguageConfiguration } = await import('../languages/dew-monarch')
 
-  monaco.languages.register({ id: 'wick' })
-  monaco.languages.setMonarchTokensProvider('wick', wickLanguage)
-  monaco.languages.setLanguageConfiguration('wick', wickLanguageConfiguration)
+  monaco.languages.register({ id: 'dew' })
+  monaco.languages.setMonarchTokensProvider('dew', dewLanguage)
+  monaco.languages.setLanguageConfiguration('dew', dewLanguageConfiguration)
 
   if (!container.value) return
 
   const editor = monaco.editor.create(container.value, {
     value: props.modelValue,
-    language: 'wick',
+    language: 'dew',
     theme: isDark.value ? 'vs-dark' : 'vs',
     minimap: { enabled: false },
     lineNumbers: 'off',

@@ -1,15 +1,15 @@
 {
-  "name": "tree-sitter-wick",
+  "name": "tree-sitter-dew",
   "version": "0.1.0",
-  "description": "Tree-sitter grammar for Wick expression language",
+  "description": "Tree-sitter grammar for Dew expression language",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rhi-zone/wick"
+    "url": "https://github.com/rhi-zone/dew"
   },
   "license": "MIT",
   "main": "bindings/node",
   "types": "bindings/node",
-  "keywords": ["parser", "tree-sitter", "wick"],
+  "keywords": ["parser", "tree-sitter", "dew"],
   "files": ["grammar.js", "binding.gyp", "prebuilds/**", "bindings/node/*", "queries/*", "src/**"],
   "dependencies": {
     "node-addon-api": "^7.1.0",
@@ -31,10 +31,10 @@
   },
   "tree-sitter": [
     {
-      "scope": "source.wick",
-      "file-types": ["wick"],
+      "scope": "source.dew",
+      "file-types": ["dew"],
       "highlights": "queries/highlights.scm",
-      "injection-regex": "^wick$"
+      "injection-regex": "^dew$"
     }
   ]
 }

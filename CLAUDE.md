@@ -4,7 +4,7 @@ Behavioral rules for Claude Code in this repository.
 
 ## Architecture
 
-**Wick** is a minimal expression language. Small, ephemeral, perfectly formed—like a droplet condensed from logic. Just wick it.
+**Dew** is a minimal expression language. Small, ephemeral, perfectly formed—like a droplet condensed from logic. Just dew it.
 
 Functions + numeric values, compiled to multiple backends (WGSL, Cranelift, Lua).
 

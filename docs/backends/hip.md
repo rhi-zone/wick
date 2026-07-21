@@ -1,25 +1,25 @@
 # HIP Backend
 
-Generate HIP kernel code from wick expressions for AMD GPUs (ROCm).
+Generate HIP kernel code from dew expressions for AMD GPUs (ROCm).
 
 ## Enable
 
 ```toml
-wick-scalar = { version = "0.1", features = ["hip"] }
-wick-linalg = { version = "0.1", features = ["hip"] }
+dew-scalar = { version = "0.1", features = ["hip"] }
+dew-linalg = { version = "0.1", features = ["hip"] }
 ```
 
 ## Overview
 
 HIP (Heterogeneous-compute Interface for Portability) is AMD's GPU programming platform designed to be **source-compatible with CUDA**. The generated HIP code is virtually identical to CUDA output, enabling easy porting between NVIDIA and AMD GPU platforms.
 
-## wick-scalar
+## dew-scalar
 
 ### Generate Expression
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::hip::emit_hip;
+use dew_core::Expr;
+use dew_scalar::hip::emit_hip;
 
 let expr = Expr::parse("sin(x) + cos(y)").unwrap();
 let hip = emit_hip(expr.ast()).unwrap();
@@ -31,7 +31,7 @@ println!("{}", hip.code);
 ### Generate Device Function
 
 ```rust
-use wick_scalar::hip::emit_hip_fn;
+use dew_scalar::hip::emit_hip_fn;
 
 let expr = Expr::parse("x * x + y * y").unwrap();
 let hip = emit_hip_fn("distance_squared", expr.ast(), &["x", "y"]).unwrap();
@@ -43,14 +43,14 @@ println!("{}", hip);
 // }
 ```
 
-## wick-linalg
+## dew-linalg
 
 ### Generate with Types
 
 ```rust
-use wick_core::Expr;
-use wick_linalg::hip::emit_hip;
-use wick_linalg::Type;
+use dew_core::Expr;
+use dew_linalg::hip::emit_hip;
+use dew_linalg::Type;
 use std::collections::HashMap;
 
 let expr = Expr::parse("dot(a, b)").unwrap();
@@ -79,7 +79,7 @@ HIP uses the same syntax as CUDA:
 
 ## Function Mapping
 
-| wick | HIP |
+| dew | HIP |
 |-----|-----|
 | `sin(x)` | `sinf(x)` |
 | `cos(x)` | `cosf(x)` |

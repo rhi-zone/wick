@@ -1,23 +1,23 @@
-# wick-complex
+# dew-complex
 
-Complex number support for wick expressions. Useful for signal processing, 2D rotations, and general complex arithmetic.
+Complex number support for dew expressions. Useful for signal processing, 2D rotations, and general complex arithmetic.
 
 ## Installation
 
 ```toml
 [dependencies]
-wick-core = "0.1"
-wick-complex = "0.1"
+dew-core = "0.1"
+dew-complex = "0.1"
 
 # Enable backends as needed
-wick-complex = { version = "0.1", features = ["wgsl", "glsl", "lua", "cranelift"] }
+dew-complex = { version = "0.1", features = ["wgsl", "glsl", "lua", "cranelift"] }
 ```
 
 ## Basic Usage
 
 ```rust
-use wick_core::Expr;
-use wick_complex::{Value, eval, complex_registry};
+use dew_core::Expr;
+use dew_complex::{Value, eval, complex_registry};
 use std::collections::HashMap;
 
 // Parse an expression

@@ -1,27 +1,27 @@
 # Integration Guide
 
-How to integrate Wick into your project.
+How to integrate Dew into your project.
 
 ## Game Engines
 
 ### Bevy
 
-Integrate Wick for hot-reloadable game logic or GPU compute shaders.
+Integrate Dew for hot-reloadable game logic or GPU compute shaders.
 
 **Setup:**
 ```toml
 [dependencies]
 bevy = "0.12"
-wick-core = { version = "0.1", features = ["cond", "func"] }
-wick-scalar = { version = "0.1", features = ["lua", "wgsl"] }
-wick-linalg = { version = "0.1", features = ["3d", "wgsl"] }
+dew-core = { version = "0.1", features = ["cond", "func"] }
+dew-scalar = { version = "0.1", features = ["lua", "wgsl"] }
+dew-linalg = { version = "0.1", features = ["3d", "wgsl"] }
 ```
 
 **Hot-Reloadable Damage Formula:**
 ```rust
 use bevy::prelude::*;
-use wick_core::Expr;
-use wick_scalar::{eval, scalar_registry};
+use dew_core::Expr;
+use dew_scalar::{eval, scalar_registry};
 
 #[derive(Resource)]
 struct GameFormulas {
@@ -60,7 +60,7 @@ fn calculate_damage(
 **WGSL Compute Shader:**
 ```rust
 use bevy::render::render_resource::*;
-use wick_linalg::{emit_wgsl, Type};
+use dew_linalg::{emit_wgsl, Type};
 
 fn create_particle_shader(device: &RenderDevice) -> ShaderModule {
     // Define particle update logic
@@ -106,7 +106,7 @@ fn create_particle_shader(device: &RenderDevice) -> ShaderModule {
 
 **Resource Loading:**
 ```rust
-use wick_core::Expr;
+use dew_core::Expr;
 use std::collections::HashMap;
 
 struct ExpressionAsset {
@@ -131,7 +131,7 @@ impl AssetLoader for ExpressionLoader {
     }
 
     fn extensions(&self) -> &[&str] {
-        &["wick"]
+        &["dew"]
     }
 }
 ```
@@ -143,15 +143,15 @@ impl AssetLoader for ExpressionLoader {
 **Rust (WASM):**
 ```rust
 use wasm_bindgen::prelude::*;
-use wick_scalar::{eval, scalar_registry};
+use dew_scalar::{eval, scalar_registry};
 
 #[wasm_bindgen]
-pub struct WickEngine {
+pub struct DewEngine {
     registry: FunctionRegistry<f32, f32>,
 }
 
 #[wasm_bindgen]
-impl WickEngine {
+impl DewEngine {
     #[wasm_bindgen(constructor)]
     pub fn new() -> Self {
         Self {
@@ -174,10 +174,10 @@ impl WickEngine {
 
 **JavaScript:**
 ```javascript
-import init, { WickEngine } from './wick_wasm.js';
+import init, { DewEngine } from './dew_wasm.js';
 
 await init();
-const engine = new WickEngine();
+const engine = new DewEngine();
 
 // Evaluate expression
 const result = engine.eval('sin(x) + cos(y)', { x: 1.0, y: 0.5 });
@@ -197,7 +197,7 @@ function animate(time) {
 ### Three.js / WebGPU
 
 ```javascript
-// Generate WGSL shader from Wick expression
+// Generate WGSL shader from Dew expression
 const shaderCode = engine.emitWGSL(
     'normalize(cross(a, b))',
     { a: 'Vec3', b: 'Vec3' }
@@ -224,7 +224,7 @@ const shaderModule = device.createShaderModule({
 
 **Shader Generation Pipeline:**
 ```rust
-use wick_linalg::{emit_wgsl, Type};
+use dew_linalg::{emit_wgsl, Type};
 use wgpu::*;
 
 struct ComputePipeline {
@@ -250,12 +250,12 @@ impl ComputePipeline {
         "#, wgsl.code);
 
         let shader_module = device.create_shader_module(ShaderModuleDescriptor {
-            label: Some("wick_compute"),
+            label: Some("dew_compute"),
             source: ShaderSource::Wgsl(shader_code.into()),
         });
 
         let bind_group_layout = device.create_bind_group_layout(&BindGroupLayoutDescriptor {
-            label: Some("wick_compute_layout"),
+            label: Some("dew_compute_layout"),
             entries: &[
                 BindGroupLayoutEntry {
                     binding: 0,
@@ -281,13 +281,13 @@ impl ComputePipeline {
         });
 
         let pipeline_layout = device.create_pipeline_layout(&PipelineLayoutDescriptor {
-            label: Some("wick_compute_layout"),
+            label: Some("dew_compute_layout"),
             bind_group_layouts: &[&bind_group_layout],
             push_constant_ranges: &[],
         });
 
         let pipeline = device.create_compute_pipeline(&ComputePipelineDescriptor {
-            label: Some("wick_compute"),
+            label: Some("dew_compute"),
             layout: Some(&pipeline_layout),
             module: &shader_module,
             entry_point: Some("main"),
@@ -306,7 +306,7 @@ impl ComputePipeline {
 ### OpenGL (via GLSL)
 
 ```rust
-use wick_linalg::emit_glsl;
+use dew_linalg::emit_glsl;
 
 fn create_gl_shader(expr: &Ast, var_types: &HashMap<String, Type>) -> String {
     let glsl = emit_glsl(expr, var_types).unwrap();
@@ -338,7 +338,7 @@ fn create_gl_shader(expr: &Ast, var_types: &HashMap<String, Type>) -> String {
 The C backend generates code for embedding in C/C++ projects with custom math libraries.
 
 ```rust
-use wick_linalg::{emit_c, emit_c_fn, Type};
+use dew_linalg::{emit_c, emit_c_fn, Type};
 
 // Generate inline expression
 let expr = Expr::parse("dot(a, b) + length(c)").unwrap();
@@ -376,7 +376,7 @@ float vec3_length(vec3 v);
 vec3 vec3_normalize(vec3 v);
 vec3 vec3_cross(vec3 a, vec3 b);
 
-// Generated Wick code uses these functions
+// Generated Dew code uses these functions
 #include "generated_expressions.c"
 ```
 
@@ -386,7 +386,7 @@ vec3 vec3_cross(vec3 a, vec3 b);
 
 ```rust
 use cpal::traits::*;
-use wick_complex::{eval_lua, Value, complex_registry};
+use dew_complex::{eval_lua, Value, complex_registry};
 
 struct AudioProcessor {
     expr: Expr,
@@ -440,8 +440,8 @@ let stream = device.build_output_stream(
 
 ```toml
 [dependencies]
-wick-core = { version = "0.1", default-features = false, features = ["func"] }
-wick-scalar = { version = "0.1", default-features = false }
+dew-core = { version = "0.1", default-features = false, features = ["func"] }
+dew-scalar = { version = "0.1", default-features = false }
 ```
 
 **Microcontroller Example:**
@@ -449,7 +449,7 @@ wick-scalar = { version = "0.1", default-features = false }
 #![no_std]
 #![no_main]
 
-use wick_scalar::{eval, scalar_registry_int};
+use dew_scalar::{eval, scalar_registry_int};
 
 #[entry]
 fn main() -> ! {
@@ -477,7 +477,7 @@ fn main() -> ! {
 For systems with a Lua interpreter:
 
 ```rust
-use wick_scalar::emit_lua_code;
+use dew_scalar::emit_lua_code;
 
 // Generate Lua code once
 let lua_code = emit_lua_code(expr.ast(), &var_types).unwrap();
@@ -499,7 +499,7 @@ std::fs::write("sensor_logic.lua", format!(r#"
 
 ```rust
 use proptest::prelude::*;
-use wick_linalg::{eval, emit_wgsl, Type};
+use dew_linalg::{eval, emit_wgsl, Type};
 
 proptest! {
     #[test]
@@ -561,7 +561,7 @@ fn test_backend_parity() {
 
 ### Expression Files
 
-**config/formulas.wick:**
+**config/formulas.dew:**
 ```
 # Damage calculation
 damage = (attack * 1.5) * (1 - defense / 100)
@@ -641,7 +641,7 @@ impl OptimizedExpressions {
 ### User-Defined Functions
 
 ```rust
-use wick_core::{ExprFn, FunctionRegistry};
+use dew_core::{ExprFn, FunctionRegistry};
 
 // Allow users to register custom functions
 pub struct PluginRegistry<T> {

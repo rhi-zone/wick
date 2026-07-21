@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 license.workspace = true
 repository.workspace = true
-description = "Combined domain crate for wick expressions (linalg + complex + quaternion)"
+description = "Combined domain crate for dew expressions (linalg + complex + quaternion)"
 
 [features]
 default = ["scalar", "linalg", "complex", "quaternion"]

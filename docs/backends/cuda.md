@@ -1,21 +1,21 @@
 # CUDA Backend
 
-Generate CUDA kernel code from wick expressions for NVIDIA GPUs.
+Generate CUDA kernel code from dew expressions for NVIDIA GPUs.
 
 ## Enable
 
 ```toml
-wick-scalar = { version = "0.1", features = ["cuda"] }
-wick-linalg = { version = "0.1", features = ["cuda"] }
+dew-scalar = { version = "0.1", features = ["cuda"] }
+dew-linalg = { version = "0.1", features = ["cuda"] }
 ```
 
-## wick-scalar
+## dew-scalar
 
 ### Generate Expression
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::cuda::emit_cuda;
+use dew_core::Expr;
+use dew_scalar::cuda::emit_cuda;
 
 let expr = Expr::parse("sin(x) + cos(y)").unwrap();
 let cuda = emit_cuda(expr.ast()).unwrap();
@@ -27,7 +27,7 @@ println!("{}", cuda.code);
 ### Generate Device Function
 
 ```rust
-use wick_scalar::cuda::emit_cuda_fn;
+use dew_scalar::cuda::emit_cuda_fn;
 
 let expr = Expr::parse("x * x + y * y").unwrap();
 let cuda = emit_cuda_fn("distance_squared", expr.ast(), &["x", "y"]).unwrap();
@@ -39,14 +39,14 @@ println!("{}", cuda);
 // }
 ```
 
-## wick-linalg
+## dew-linalg
 
 ### Generate with Types
 
 ```rust
-use wick_core::Expr;
-use wick_linalg::cuda::emit_cuda;
-use wick_linalg::Type;
+use dew_core::Expr;
+use dew_linalg::cuda::emit_cuda;
+use dew_linalg::Type;
 use std::collections::HashMap;
 
 let expr = Expr::parse("dot(a, b)").unwrap();
@@ -67,7 +67,7 @@ println!("{}", result.code);
 
 CUDA provides native vector types:
 
-| wick Type | CUDA Type |
+| dew Type | CUDA Type |
 |----------|-----------|
 | Scalar | `float` |
 | Vec2 | `float2` |
@@ -118,7 +118,7 @@ Alternatively, include CUDA's `helper_math.h` for operator overloading.
 
 ## Function Mapping
 
-| wick | CUDA |
+| dew | CUDA |
 |-----|------|
 | `sin(x)` | `sinf(x)` |
 | `cos(x)` | `cosf(x)` |

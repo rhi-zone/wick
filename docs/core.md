@@ -1,20 +1,20 @@
-# wick-core
+# dew-core
 
-The foundational crate providing the AST, parser, and base types for wick expressions.
+The foundational crate providing the AST, parser, and base types for dew expressions.
 
 ## Installation
 
 ```toml
 [dependencies]
-wick-core = "0.1"
+dew-core = "0.1"
 
 # Enable optional features
-wick-core = { version = "0.1", features = ["cond", "func"] }
+dew-core = { version = "0.1", features = ["cond", "func"] }
 ```
 
 ## Features
 
-wick-core provides opt-in features to manage complexity:
+dew-core provides opt-in features to manage complexity:
 
 | Feature | Description |
 |---------|-------------|
@@ -28,7 +28,7 @@ wick-core provides opt-in features to manage complexity:
 Without any features, you get a minimal expression language:
 
 ```rust
-use wick_core::Expr;
+use dew_core::Expr;
 use std::collections::HashMap;
 
 // Parse an arithmetic expression
@@ -106,7 +106,7 @@ let a = x * 2; let b = a + 1; b * b
 
 Example:
 ```rust
-use wick_core::Expr;
+use dew_core::Expr;
 use std::collections::HashMap;
 
 let expr = Expr::parse("let t = x * 2 + 1; sin(t) * cos(t)").unwrap();
@@ -127,7 +127,7 @@ Let bindings:
 Enable with `features = ["cond"]`:
 
 ```rust
-use wick_core::Expr;
+use dew_core::Expr;
 use std::collections::HashMap;
 
 let expr = Expr::parse("if x > 0 then x else -x").unwrap();
@@ -168,7 +168,7 @@ Boolean results are represented as scalars: 0.0 = false, 1.0 = true.
 Enable with `features = ["func"]`:
 
 ```rust
-use wick_core::{Expr, ExprFn, FunctionRegistry};
+use dew_core::{Expr, ExprFn, FunctionRegistry};
 use std::collections::HashMap;
 
 // Define a custom function
@@ -241,8 +241,8 @@ let result = expr.eval(&empty_vars);
 Enable with `features = ["optimize"]`:
 
 ```rust
-use wick_core::{Expr, Ast};
-use wick_core::optimize::{optimize, standard_passes};
+use dew_core::{Expr, Ast};
+use dew_core::optimize::{optimize, standard_passes};
 
 let expr = Expr::parse("(1 + 2) * x + 0").unwrap();
 let optimized = optimize(expr.ast().clone(), &standard_passes());
@@ -262,11 +262,11 @@ See the [Optimization Guide](/optimization) for details.
 
 ## Combining with Domain Crates
 
-wick-core is syntax-only. Domain crates add semantics:
+dew-core is syntax-only. Domain crates add semantics:
 
-- **wick-scalar**: Scalar math functions (sin, cos, exp, etc.)
-- **wick-linalg**: Linear algebra (Vec2, Vec3, Mat2, Mat3)
-- **wick-complex**: Complex numbers
-- **wick-quaternion**: Quaternions for 3D rotation
+- **dew-scalar**: Scalar math functions (sin, cos, exp, etc.)
+- **dew-linalg**: Linear algebra (Vec2, Vec3, Mat2, Mat3)
+- **dew-complex**: Complex numbers
+- **dew-quaternion**: Quaternions for 3D rotation
 
 All domain crates require the `func` feature (they depend on function calls).

@@ -1787,9 +1787,9 @@ fn lua_to_value<T: num_traits::Float + mlua::FromLua>(
                 .as_table()
                 .ok_or_else(|| EvalError::TypeConversion("expected table for Vec4".into()))?;
             let mut arr = [T::zero(); 4];
-            for i in 0..4 {
+            for (i, slot) in arr.iter_mut().enumerate() {
                 let v: f64 = table.get(i + 1).map_err(EvalError::Lua)?;
-                arr[i] = T::from(v)
+                *slot = T::from(v)
                     .ok_or_else(|| EvalError::TypeConversion(format!("vec4[{}]", i + 1)))?;
             }
             Ok(Value::Vec4(arr))
@@ -1799,9 +1799,9 @@ fn lua_to_value<T: num_traits::Float + mlua::FromLua>(
                 .as_table()
                 .ok_or_else(|| EvalError::TypeConversion("expected table for Mat2".into()))?;
             let mut arr = [T::zero(); 4];
-            for i in 0..4 {
+            for (i, slot) in arr.iter_mut().enumerate() {
                 let v: f64 = table.get(i + 1).map_err(EvalError::Lua)?;
-                arr[i] = T::from(v)
+                *slot = T::from(v)
                     .ok_or_else(|| EvalError::TypeConversion(format!("mat2[{}]", i + 1)))?;
             }
             Ok(Value::Mat2(arr))
@@ -1812,9 +1812,9 @@ fn lua_to_value<T: num_traits::Float + mlua::FromLua>(
                 .as_table()
                 .ok_or_else(|| EvalError::TypeConversion("expected table for Mat3".into()))?;
             let mut arr = [T::zero(); 9];
-            for i in 0..9 {
+            for (i, slot) in arr.iter_mut().enumerate() {
                 let v: f64 = table.get(i + 1).map_err(EvalError::Lua)?;
-                arr[i] = T::from(v)
+                *slot = T::from(v)
                     .ok_or_else(|| EvalError::TypeConversion(format!("mat3[{}]", i + 1)))?;
             }
             Ok(Value::Mat3(arr))
@@ -1825,9 +1825,9 @@ fn lua_to_value<T: num_traits::Float + mlua::FromLua>(
                 .as_table()
                 .ok_or_else(|| EvalError::TypeConversion("expected table for Mat4".into()))?;
             let mut arr = [T::zero(); 16];
-            for i in 0..16 {
+            for (i, slot) in arr.iter_mut().enumerate() {
                 let v: f64 = table.get(i + 1).map_err(EvalError::Lua)?;
-                arr[i] = T::from(v)
+                *slot = T::from(v)
                     .ok_or_else(|| EvalError::TypeConversion(format!("mat4[{}]", i + 1)))?;
             }
             Ok(Value::Mat4(arr))

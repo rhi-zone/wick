@@ -1,6 +1,6 @@
 # Editor Support
 
-Syntax highlighting and editor integration for Wick.
+Syntax highlighting and editor integration for Dew.
 
 ## Contents
 
@@ -8,11 +8,11 @@ Syntax highlighting and editor integration for Wick.
 |-----------|-------------|
 | `textmate/` | TextMate grammar (VSCode, Shiki, Sublime, etc.) |
 | `vscode/` | VSCode extension |
-| `tree-sitter-wick/` | Tree-sitter grammar (Neovim, Helix, Zed, Emacs) |
+| `tree-sitter-dew/` | Tree-sitter grammar (Neovim, Helix, Zed, Emacs) |
 
 ## TextMate Grammar
 
-The TextMate grammar (`textmate/wick.tmLanguage.json`) is the source for:
+The TextMate grammar (`textmate/dew.tmLanguage.json`) is the source for:
 - VSCode extension
 - Shiki syntax highlighting (VitePress docs)
 - Any TextMate-compatible editor
@@ -23,4 +23,4 @@ See `vscode/README.md` for installation instructions.
 
 ## Tree-sitter Grammar
 
-See `tree-sitter-wick/README.md` for usage with Neovim, Helix, and other editors.
+See `tree-sitter-dew/README.md` for usage with Neovim, Helix, and other editors.

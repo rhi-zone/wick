@@ -41,7 +41,7 @@ impl CUDAExpr {
     }
 }
 
-/// Mapping of wick functions to CUDA functions.
+/// Mapping of dew functions to CUDA functions.
 enum CUDAFunc {
     /// Single argument function: func(x)
     Func1(&'static str),

@@ -1,21 +1,21 @@
 # TokenStream Backend
 
-Generate `proc_macro2::TokenStream` from wick expressions for use in Rust proc-macros.
+Generate `proc_macro2::TokenStream` from dew expressions for use in Rust proc-macros.
 
 ## Enable
 
 ```toml
-wick-scalar = { version = "0.1", features = ["tokenstream"] }
-wick-linalg = { version = "0.1", features = ["tokenstream"] }
+dew-scalar = { version = "0.1", features = ["tokenstream"] }
+dew-linalg = { version = "0.1", features = ["tokenstream"] }
 ```
 
-## wick-scalar
+## dew-scalar
 
 ### Generate TokenStream
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::tokenstream::emit_tokenstream;
+use dew_core::Expr;
+use dew_scalar::tokenstream::emit_tokenstream;
 
 let expr = Expr::parse("sin(x) + cos(y)").unwrap();
 let tokens = emit_tokenstream(expr.ast()).unwrap();
@@ -24,14 +24,14 @@ let tokens = emit_tokenstream(expr.ast()).unwrap();
 // Output equivalent: (x.sin() + y.cos())
 ```
 
-## wick-linalg
+## dew-linalg
 
 ### Generate with Types (glam-compatible)
 
 ```rust
-use wick_core::Expr;
-use wick_linalg::tokenstream::emit_tokenstream;
-use wick_linalg::Type;
+use dew_core::Expr;
+use dew_linalg::tokenstream::emit_tokenstream;
+use dew_linalg::Type;
 use std::collections::HashMap;
 
 let expr = Expr::parse("normalize(v) * 2.0").unwrap();
@@ -50,7 +50,7 @@ let result = emit_tokenstream(expr.ast(), &var_types).unwrap();
 
 The linalg backend emits code compatible with the [glam](https://docs.rs/glam) math library:
 
-| wick Type | glam Type |
+| dew Type | glam Type |
 |----------|-----------|
 | Scalar | `f32` |
 | Vec2 | `Vec2` |
@@ -63,10 +63,10 @@ The linalg backend emits code compatible with the [glam](https://docs.rs/glam) m
 ### Vector Constructors
 
 ```rust
-// wick: vec2(x, y)
+// dew: vec2(x, y)
 // Output: Vec2::new(x, y)
 
-// wick: vec3(x, y, z)
+// dew: vec3(x, y, z)
 // Output: Vec3::new(x, y, z)
 ```
 
@@ -75,19 +75,19 @@ The linalg backend emits code compatible with the [glam](https://docs.rs/glam) m
 TokenStream output uses Rust method syntax:
 
 ```rust
-// wick: dot(a, b)
+// dew: dot(a, b)
 // Output: a.dot(b)
 
-// wick: normalize(v)
+// dew: normalize(v)
 // Output: v.normalize()
 
-// wick: lerp(a, b, t)
+// dew: lerp(a, b, t)
 // Output: a.lerp(b, t)
 ```
 
 ## Function Mapping
 
-| wick | TokenStream Output |
+| dew | TokenStream Output |
 |-----|-------------------|
 | `sin(x)` | `x.sin()` |
 | `cos(x)` | `x.cos()` |
@@ -109,13 +109,13 @@ The primary use case is generating code at compile time in procedural macros:
 ```rust
 use proc_macro::TokenStream;
 use quote::quote;
-use wick_core::Expr;
-use wick_scalar::tokenstream::emit_tokenstream;
+use dew_core::Expr;
+use dew_scalar::tokenstream::emit_tokenstream;
 
 #[proc_macro]
-pub fn wick(input: TokenStream) -> TokenStream {
+pub fn dew(input: TokenStream) -> TokenStream {
     let expr_str = input.to_string();
-    let expr = Expr::parse(&expr_str).expect("invalid wick expression");
+    let expr = Expr::parse(&expr_str).expect("invalid dew expression");
     let tokens = emit_tokenstream(expr.ast()).expect("codegen failed");
 
     quote! {

@@ -286,17 +286,6 @@ pub fn emit_opencl_fn(
     ))
 }
 
-fn is_vector_type(t: Type) -> bool {
-    match t {
-        Type::Scalar => false,
-        Type::Vec2 | Type::Mat2 => true,
-        #[cfg(feature = "3d")]
-        Type::Vec3 | Type::Mat3 => true,
-        #[cfg(feature = "4d")]
-        Type::Vec4 | Type::Mat4 => true,
-    }
-}
-
 fn is_matrix_type(t: Type) -> bool {
     match t {
         Type::Scalar | Type::Vec2 => false,

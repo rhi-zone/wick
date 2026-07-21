@@ -1,6 +1,6 @@
-# tree-sitter-wick
+# tree-sitter-dew
 
-Tree-sitter grammar for the Wick expression language.
+Tree-sitter grammar for the Dew expression language.
 
 ## Usage
 
@@ -25,17 +25,17 @@ Add to your nvim-treesitter config:
 
 ```lua
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.wick = {
+parser_config.dew = {
   install_info = {
-    url = "https://github.com/rhi-zone/wick",
-    files = { "editors/tree-sitter-wick/src/parser.c" },
-    location = "editors/tree-sitter-wick",
+    url = "https://github.com/rhi-zone/dew",
+    files = { "editors/tree-sitter-dew/src/parser.c" },
+    location = "editors/tree-sitter-dew",
   },
-  filetype = "wick",
+  filetype = "dew",
 }
 ```
 
-Then copy `queries/highlights.scm` to `~/.config/nvim/queries/wick/highlights.scm`.
+Then copy `queries/highlights.scm` to `~/.config/nvim/queries/dew/highlights.scm`.
 
 #### Helix
 
@@ -43,20 +43,20 @@ Add to `~/.config/helix/languages.toml`:
 
 ```toml
 [[language]]
-name = "wick"
-scope = "source.wick"
-file-types = ["wick"]
+name = "dew"
+scope = "source.dew"
+file-types = ["dew"]
 roots = []
 comment-token = "//"
 
 [[grammar]]
-name = "wick"
-source = { git = "https://github.com/rhi-zone/wick", subpath = "editors/tree-sitter-wick" }
+name = "dew"
+source = { git = "https://github.com/rhi-zone/dew", subpath = "editors/tree-sitter-dew" }
 ```
 
 ## Syntax
 
-```wick
+```dew
 // Basic arithmetic
 x * 2 + y
 

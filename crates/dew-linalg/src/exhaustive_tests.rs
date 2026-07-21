@@ -575,7 +575,7 @@ fn test_hadamard_vec3() {
 }
 
 // ============================================================================
-// Linalg functions - lerp / mix (vector types only, scalar lerp is in wick-std)
+// Linalg functions - lerp / mix (vector types only, scalar lerp is in dew-std)
 // ============================================================================
 
 #[test]

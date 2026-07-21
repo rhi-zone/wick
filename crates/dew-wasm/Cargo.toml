@@ -2,7 +2,7 @@
 name = "dew-wasm"
 version = "0.1.0"
 edition = "2021"
-description = "WebAssembly bindings for Wick expression language"
+description = "WebAssembly bindings for Dew expression language"
 license = "MIT"
 publish = false
 

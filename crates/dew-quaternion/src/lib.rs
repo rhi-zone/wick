@@ -1,4 +1,4 @@
-//! Quaternion support for wick expressions.
+//! Quaternion support for dew expressions.
 //!
 //! Provides quaternion types and operations for 3D rotations. Uses [x, y, z, w]
 //! component order (scalar last, matching GLM/glTF convention).

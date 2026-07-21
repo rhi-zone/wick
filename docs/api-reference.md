@@ -1,6 +1,6 @@
 # API Reference
 
-Complete reference for all Wick operators and functions.
+Complete reference for all Dew operators and functions.
 
 ## Operator Precedence
 
@@ -28,7 +28,7 @@ a < b and b < c # → (a < b) and (b < c)
 -x ^ 2          # → -(x ^ 2)  (unary has lower precedence than power)
 ```
 
-## Scalar Functions (wick-scalar)
+## Scalar Functions (dew-scalar)
 
 ### Constants
 
@@ -107,7 +107,7 @@ Available with `scalar_registry_int()` for i32/i64 types:
 | `>>` | Right shift |
 | `~x` | Bitwise NOT |
 
-## Vector Functions (wick-linalg)
+## Vector Functions (dew-linalg)
 
 ### Constructors
 
@@ -190,7 +190,7 @@ These functions apply element-wise to vectors:
 | `m1 * m2` | MatN × MatN | MatN | Matrix multiplication |
 | `m * s` | MatN × Scalar | MatN | Scale matrix |
 
-## Complex Functions (wick-complex)
+## Complex Functions (dew-complex)
 
 ### Component Access
 
@@ -235,7 +235,7 @@ These functions apply element-wise to vectors:
 | `-z` | -Complex | Complex | Negation |
 | `s * z` | Scalar × Complex | Complex | Scale |
 
-## Quaternion Functions (wick-quaternion)
+## Quaternion Functions (dew-quaternion)
 
 Quaternions use **[x, y, z, w]** order (scalar-last convention).
 

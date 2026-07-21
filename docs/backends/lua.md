@@ -1,21 +1,21 @@
 # Lua Backend
 
-Generate and execute Lua code from wick expressions.
+Generate and execute Lua code from dew expressions.
 
 ## Enable
 
 ```toml
-wick-scalar = { version = "0.1", features = ["lua"] }
-wick-linalg = { version = "0.1", features = ["lua"] }
+dew-scalar = { version = "0.1", features = ["lua"] }
+dew-linalg = { version = "0.1", features = ["lua"] }
 ```
 
-## wick-scalar
+## dew-scalar
 
 ### Generate Lua Code
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::lua::emit_lua;
+use dew_core::Expr;
+use dew_scalar::lua::emit_lua;
 
 let expr = Expr::parse("sin(x) + cos(y)").unwrap();
 let lua_code = emit_lua(expr.ast()).unwrap();
@@ -27,7 +27,7 @@ println!("{}", lua_code.code);
 ### Generate Function
 
 ```rust
-use wick_scalar::lua::emit_lua_fn;
+use dew_scalar::lua::emit_lua_fn;
 
 let expr = Expr::parse("x * x + y * y").unwrap();
 let lua_fn = emit_lua_fn("distance_squared", expr.ast(), &["x", "y"]).unwrap();
@@ -42,8 +42,8 @@ println!("{}", lua_fn);
 ### Execute Directly
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::lua::eval_lua;
+use dew_core::Expr;
+use dew_scalar::lua::eval_lua;
 use std::collections::HashMap;
 
 let expr = Expr::parse("sin(x) * 2").unwrap();
@@ -55,14 +55,14 @@ let result = eval_lua(expr.ast(), &vars).unwrap();
 println!("Result: {}", result);
 ```
 
-## wick-linalg
+## dew-linalg
 
 ### Generate with Types
 
 ```rust
-use wick_core::Expr;
-use wick_linalg::lua::emit_lua;
-use wick_linalg::Type;
+use dew_core::Expr;
+use dew_linalg::lua::emit_lua;
+use dew_linalg::Type;
 use std::collections::HashMap;
 
 let expr = Expr::parse("dot(a, b)").unwrap();
@@ -79,8 +79,8 @@ println!("{}", result.code);
 ### Execute with Values
 
 ```rust
-use wick_linalg::lua::eval_lua;
-use wick_linalg::Value;
+use dew_linalg::lua::eval_lua;
+use dew_linalg::Value;
 
 let expr = Expr::parse("length(v)").unwrap();
 
@@ -93,7 +93,7 @@ let result = eval_lua(expr.ast(), &vars).unwrap();
 
 ## Function Mapping
 
-| wick | Lua |
+| dew | Lua |
 |-----|-----|
 | `sin(x)` | `math.sin(x)` |
 | `floor(x)` | `math.floor(x)` |

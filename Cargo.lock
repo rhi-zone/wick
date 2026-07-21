@@ -297,6 +297,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "dew-examples"
+version = "0.0.0"
+dependencies = [
+ "dew-complex",
+ "dew-core",
+ "dew-linalg",
+ "dew-quaternion",
+ "dew-scalar",
+]
+
+[[package]]
 name = "dew-linalg"
 version = "0.1.0"
 dependencies = [
@@ -1148,17 +1159,6 @@ dependencies = [
  "env_home",
  "rustix",
  "winsafe",
-]
-
-[[package]]
-name = "wick-examples"
-version = "0.0.0"
-dependencies = [
- "dew-complex",
- "dew-core",
- "dew-linalg",
- "dew-quaternion",
- "dew-scalar",
 ]
 
 [[package]]

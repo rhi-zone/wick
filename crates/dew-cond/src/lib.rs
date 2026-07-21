@@ -87,7 +87,7 @@
 //!
 //! # Boolean Representation
 //!
-//! Wick expressions use scalars for boolean values (0.0 = false, non-zero = true).
+//! Dew expressions use scalars for boolean values (0.0 = false, non-zero = true).
 //! The `scalar_to_bool` and `bool_to_scalar` functions handle conversions between
 //! the numeric representation and backend-native booleans.
 //!

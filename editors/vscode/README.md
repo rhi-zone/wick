@@ -1,12 +1,12 @@
-# Wick Language for VSCode
+# Dew Language for VSCode
 
-Syntax highlighting for the Wick expression language.
+Syntax highlighting for the Dew expression language.
 
 ## Installation
 
 ### From Source
 
-1. Copy this folder to `~/.vscode/extensions/wick-lang`
+1. Copy this folder to `~/.vscode/extensions/dew-lang`
 2. Restart VSCode
 
 ### Development
@@ -18,13 +18,13 @@ code --extensionDevelopmentPath=$(pwd)
 
 ## Features
 
-- Syntax highlighting for `.wick` files
+- Syntax highlighting for `.dew` files
 - Bracket matching
 - Comment toggling (`//`)
 
 ## Syntax
 
-```wick
+```dew
 // Basic arithmetic
 x * 2 + y
 

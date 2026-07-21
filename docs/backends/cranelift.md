@@ -1,21 +1,21 @@
 # Cranelift Backend
 
-JIT compile wick expressions to native code via Cranelift.
+JIT compile dew expressions to native code via Cranelift.
 
 ## Enable
 
 ```toml
-wick-scalar = { version = "0.1", features = ["cranelift"] }
-wick-linalg = { version = "0.1", features = ["cranelift"] }
+dew-scalar = { version = "0.1", features = ["cranelift"] }
+dew-linalg = { version = "0.1", features = ["cranelift"] }
 ```
 
-## wick-scalar
+## dew-scalar
 
 ### Compile and Execute
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::cranelift::ScalarJit;
+use dew_core::Expr;
+use dew_scalar::cranelift::ScalarJit;
 
 // Create JIT compiler
 let jit = ScalarJit::new().unwrap();
@@ -42,14 +42,14 @@ for i in 0..1000 {
 }
 ```
 
-## wick-linalg
+## dew-linalg
 
 ### Compile with Types
 
 ```rust
-use wick_core::Expr;
-use wick_linalg::cranelift::LinalgJit;
-use wick_linalg::Type;
+use dew_core::Expr;
+use dew_linalg::cranelift::LinalgJit;
+use dew_linalg::Type;
 
 let jit = LinalgJit::new().unwrap();
 

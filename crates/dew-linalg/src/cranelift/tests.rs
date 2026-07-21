@@ -308,8 +308,8 @@ fn test_mat3_scalar_mul() {
         .compile_mat3(expr.ast(), &[VarSpec::new("m", Type::Mat3)])
         .unwrap();
     let result = func.call(&[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]);
-    for i in 0..9 {
-        assert!(approx_eq(result[i], (i as f32 + 1.0) * 2.0));
+    for (i, &r) in result.iter().enumerate() {
+        assert!(approx_eq(r, (i as f32 + 1.0) * 2.0));
     }
 }
 
@@ -369,8 +369,8 @@ fn test_mat4_scalar_mul() {
         .unwrap();
     let input: [f32; 16] = std::array::from_fn(|i| i as f32 + 1.0);
     let result = func.call(&input);
-    for i in 0..16 {
-        assert!(approx_eq(result[i], (i as f32 + 1.0) * 2.0));
+    for (i, &r) in result.iter().enumerate() {
+        assert!(approx_eq(r, (i as f32 + 1.0) * 2.0));
     }
 }
 

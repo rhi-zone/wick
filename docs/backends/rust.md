@@ -1,21 +1,21 @@
 # Rust Backend
 
-Generate Rust source code from wick expressions.
+Generate Rust source code from dew expressions.
 
 ## Enable
 
 ```toml
-wick-scalar = { version = "0.1", features = ["rust"] }
-wick-linalg = { version = "0.1", features = ["rust"] }
+dew-scalar = { version = "0.1", features = ["rust"] }
+dew-linalg = { version = "0.1", features = ["rust"] }
 ```
 
-## wick-scalar
+## dew-scalar
 
 ### Generate Expression
 
 ```rust
-use wick_core::Expr;
-use wick_scalar::rust::emit_rust;
+use dew_core::Expr;
+use dew_scalar::rust::emit_rust;
 
 let expr = Expr::parse("sin(x) + cos(y)").unwrap();
 let rust = emit_rust(expr.ast()).unwrap();
@@ -27,7 +27,7 @@ println!("{}", rust.code);
 ### Generate Function
 
 ```rust
-use wick_scalar::rust::emit_rust_fn;
+use dew_scalar::rust::emit_rust_fn;
 
 let expr = Expr::parse("x * x + y * y").unwrap();
 let rust = emit_rust_fn("distance_squared", expr.ast(), &["x", "y"]).unwrap();
@@ -39,14 +39,14 @@ println!("{}", rust);
 // }
 ```
 
-## wick-linalg
+## dew-linalg
 
 ### Generate with Types
 
 ```rust
-use wick_core::Expr;
-use wick_linalg::rust::emit_rust;
-use wick_linalg::Type;
+use dew_core::Expr;
+use dew_linalg::rust::emit_rust;
+use dew_linalg::Type;
 use std::collections::HashMap;
 
 let expr = Expr::parse("dot(a, b)").unwrap();
@@ -63,7 +63,7 @@ println!("{}", result.code);
 
 ## Function Mapping
 
-| wick | Rust |
+| dew | Rust |
 |-----|------|
 | `sin(x)` | `x.sin()` |
 | `cos(x)` | `x.cos()` |

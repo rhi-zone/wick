@@ -42,7 +42,7 @@ impl HIPExpr {
     }
 }
 
-/// Mapping of wick functions to HIP functions.
+/// Mapping of dew functions to HIP functions.
 enum HIPFunc {
     /// Single argument function: func(x)
     Func1(&'static str),

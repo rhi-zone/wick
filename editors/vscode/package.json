@@ -1,12 +1,12 @@
 {
-  "name": "wick-lang",
-  "displayName": "Wick Language",
-  "description": "Syntax highlighting for Wick expression language",
+  "name": "dew-lang",
+  "displayName": "Dew Language",
+  "description": "Syntax highlighting for Dew expression language",
   "version": "0.1.0",
   "publisher": "rhizome-lab",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rhi-zone/wick"
+    "url": "https://github.com/rhi-zone/dew"
   },
   "engines": {
     "vscode": "^1.75.0"
@@ -15,17 +15,17 @@
   "contributes": {
     "languages": [
       {
-        "id": "wick",
-        "aliases": ["Wick", "wick"],
-        "extensions": [".wick"],
+        "id": "dew",
+        "aliases": ["Dew", "dew"],
+        "extensions": [".dew"],
         "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
       {
-        "language": "wick",
-        "scopeName": "source.wick",
-        "path": "./syntaxes/wick.tmLanguage.json"
+        "language": "dew",
+        "scopeName": "source.dew",
+        "path": "./syntaxes/dew.tmLanguage.json"
       }
     ]
   }

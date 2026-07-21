@@ -1,13 +1,13 @@
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
-import wickGrammar from '../../editors/textmate/wick.tmLanguage.json'
+import dewGrammar from '../../editors/textmate/dew.tmLanguage.json'
 
 export default withMermaid(
   defineConfig({
     vite: {
       optimizeDeps: {
         include: ['mermaid'],
-        exclude: ['wick_wasm'],
+        exclude: ['dew_wasm'],
       },
       build: {
         rollupOptions: {
@@ -21,12 +21,12 @@ export default withMermaid(
       },
     },
     markdown: {
-      languages: [wickGrammar as any],
+      languages: [dewGrammar as any],
     },
-    title: 'Wick',
+    title: 'Dew',
     description: 'Minimal expression language with multiple backends',
 
-    base: '/wick/',
+    base: '/dew/',
 
     themeConfig: {
       nav: [
@@ -50,11 +50,11 @@ export default withMermaid(
           {
             text: 'Crates',
             items: [
-              { text: 'wick-core', link: '/core' },
-              { text: 'wick-scalar', link: '/scalar' },
-              { text: 'wick-linalg', link: '/linalg' },
-              { text: 'wick-complex', link: '/complex' },
-              { text: 'wick-quaternion', link: '/quaternion' },
+              { text: 'dew-core', link: '/core' },
+              { text: 'dew-scalar', link: '/scalar' },
+              { text: 'dew-linalg', link: '/linalg' },
+              { text: 'dew-complex', link: '/complex' },
+              { text: 'dew-quaternion', link: '/quaternion' },
             ]
           },
           {
@@ -82,7 +82,7 @@ export default withMermaid(
       },
 
       socialLinks: [
-        { icon: 'github', link: 'https://github.com/rhi-zone/wick' }
+        { icon: 'github', link: 'https://github.com/rhi-zone/dew' }
       ],
 
       search: {
@@ -90,7 +90,7 @@ export default withMermaid(
       },
 
       editLink: {
-        pattern: 'https://github.com/rhi-zone/wick/edit/master/docs/:path',
+        pattern: 'https://github.com/rhi-zone/dew/edit/master/docs/:path',
         text: 'Edit this page on GitHub'
       },
     },

@@ -1,4 +1,4 @@
-//! Linear algebra types and operations for wick expressions.
+//! Linear algebra types and operations for dew expressions.
 //!
 //! This crate provides vector and matrix types (Vec2, Vec3, Mat2, Mat3, etc.)
 //! that work with dew-core's AST. Types propagate during evaluation/emission.

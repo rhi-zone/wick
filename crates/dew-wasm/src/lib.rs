@@ -1,4 +1,4 @@
-//! WebAssembly bindings for Wick expression language.
+//! WebAssembly bindings for Dew expression language.
 //!
 //! Provides parsing and code generation for use in web browsers.
 
@@ -59,7 +59,7 @@ fn code_err(error: String) -> JsCodeResult {
     }
 }
 
-/// Parse a wick expression and return the AST as a JavaScript object.
+/// Parse a dew expression and return the AST as a JavaScript object.
 #[wasm_bindgen]
 pub fn parse(input: &str) -> JsValue {
     let result = match Expr::parse(input) {

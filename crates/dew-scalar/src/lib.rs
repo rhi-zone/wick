@@ -1,4 +1,4 @@
-//! Standard scalar function library for wick expressions.
+//! Standard scalar function library for dew expressions.
 //!
 //! This crate provides the foundation for numeric expressions: standard math functions
 //! (sin, cos, sqrt, etc.), constants (pi, e, tau), and evaluation for scalar values.
