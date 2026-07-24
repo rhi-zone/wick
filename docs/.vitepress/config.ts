@@ -23,10 +23,11 @@ export default withMermaid(
     markdown: {
       languages: [dewGrammar as any],
     },
-    title: 'Dew',
+    title: 'dew',
     description: 'Minimal expression language with multiple backends',
 
     base: '/dew/',
+    srcExclude: ['**/CLAUDE.md'],
 
     themeConfig: {
       nav: [
